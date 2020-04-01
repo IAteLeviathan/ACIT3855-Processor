@@ -1,0 +1,40 @@
+swagger: '2.0'
+info:
+  description: This is an API for doctor and dentist booking
+  version: 1.0.0
+  title: Medical Booking API
+
+paths:
+  /reading/stats:
+    get:
+      summary: gets booking stats
+      operationId: app.get_booking_stat
+      description: retrieves all booking
+      produces:
+      - application/json
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            $ref: '#/definitions/ReadingStats'
+        400:
+          description: bad input parameter
+          
+definitions:
+  ReadingStats:
+    type: object
+    required:
+    - num_dentist_booking
+    - num_doctor_booking
+    - timestamp
+    properties:
+      num_dentist_reading:
+        type: integer
+        example: 1541
+      num_doctor_reading:
+        type: integer
+        example: 121
+      timestamp:
+        type: string
+        format: date-time
+        example: 2020-08-29:12:00:00
